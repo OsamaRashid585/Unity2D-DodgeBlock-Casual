@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public int _lifes = 3;
   [SerializeField] private Text _lifeTxt;
+    public bool IsGameOver = false;
 
 
     private void Awake()
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator GameOver()
     {
+        IsGameOver = true;
         Time.timeScale = 0.5f;
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene(1);

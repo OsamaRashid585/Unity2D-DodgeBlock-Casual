@@ -21,19 +21,22 @@ public class SpawnManager : MonoBehaviour
 
     private void ObjectSpawner()
     {
-        _objectPrefabPos[0] = new Vector2(-6.5f, 7f);
-        _objectPrefabPos[1] = new Vector2(-3.2f, 7f);
-        _objectPrefabPos[2] = new Vector2(0f, 7f);
-        _objectPrefabPos[3] = new Vector2(3.2f, 7f);
-        _objectPrefabPos[4] = new Vector2(6.5f, 7f);
-
-        int randNum = Random.Range(0, 5);
-
-        for (int i = 0; i < 5; i++)
+        if(GameManager.Instance.IsGameOver == false)
         {
-            if (i != randNum)
+            _objectPrefabPos[0] = new Vector2(-6.5f, 7f);
+            _objectPrefabPos[1] = new Vector2(-3.2f, 7f);
+            _objectPrefabPos[2] = new Vector2(0f, 7f);
+            _objectPrefabPos[3] = new Vector2(3.2f, 7f);
+            _objectPrefabPos[4] = new Vector2(6.5f, 7f);
+
+            int randNum = Random.Range(0, 5);
+
+            for (int i = 0; i < 5; i++)
             {
-                Instantiate(_objectPrefab[i], _objectPrefabPos[i], Quaternion.identity);
+                if (i != randNum)
+                {
+                    Instantiate(_objectPrefab[i], _objectPrefabPos[i], Quaternion.identity);
+                }
             }
         }
     }
